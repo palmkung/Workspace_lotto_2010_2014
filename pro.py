@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import csv
 with open("List_of_lotto_2010_2014 - Sheet1.csv") as csvfile:
     reader = csv.DictReader(csvfile)
@@ -36,4 +37,17 @@ with open("List_of_lotto_2010_2014 - Sheet1.csv") as csvfile:
     print(dic3)
     print(dic4)
         
-    
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+objects = dic.keys()
+y_pos = np.arange(len(objects))
+performance = dic.values()
+ 
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.ylabel('Times')
+plt.title('ww')
+ 
+plt.show()
