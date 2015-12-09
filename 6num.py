@@ -8,15 +8,15 @@ with open("List_of_lotto_2010_2014 - Sheet1.csv") as csvfile:
     digit4 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit5 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit6 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
+    
     for lotto in table:
-        if len(lotto) == 5:
-            lotto = "0" + lotto
         digit1[lotto[0]] += 1
         digit2[lotto[1]] += 1
         digit3[lotto[2]] += 1
         digit4[lotto[3]] += 1
         digit5[lotto[4]] += 1
         digit6[lotto[5]] += 1
+        
     list_of_num = ["0","1","2","3","4","5","6","7","8","9"]
     list_of_times1 = []
     list_of_times2 = []
