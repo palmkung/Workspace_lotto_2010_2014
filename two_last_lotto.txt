@@ -1,0 +1,68 @@
+import csv
+def lotto_two():
+    '''
+    This is output of 2Last in 2010-2014
+    '''
+    with open("lotto2010_2014.csv") as csvfile:
+        reader = csv.DictReader(csvfile)
+        table = [row['2Last'] for row in reader]
+        print(table)
+        print(len(table))
+        dic_two_2010 = {}
+        dic_two_2011 = {}
+        dic_two_2012 = {}
+        dic_two_2013 = {}
+        dic_two_2014 = {}
+        
+        count = 24
+        for i in range(count):
+            #this 2Last_lotto in 2010      
+            if table[i] not in dic_two_2010:
+                dic_two_2010[table[i]] = 1
+            else:
+                dic_two_2010[table[i]] += 1
+
+        count = 48
+        for i in range(24, count):
+            #this 2Last_lotto in 2011
+            if table[i] not in dic_two_2011:
+                dic_two_2011[table[i]] = 1
+            else:
+                dic_two_2011[table[i]] += 1
+
+        count = 72
+        for i in range(48, count):
+            #this 2Last_lotto in 2012
+            if table[i] not in dic_two_2012:
+                dic_two_2012[table[i]] = 1
+            else:
+                dic_two_2012[table[i]] += 1
+
+        count = 96
+        for i in range(72, count):
+            #this 2Last_lotto in 2013
+            if table[i] not in dic_two_2013:
+                dic_two_2013[table[i]] = 1
+            else:
+                dic_two_2013[table[i]] += 1
+        count = 120
+        for i in range(96, count):
+            #this 2Last_lotto in 2014
+            if table[i] not in dic_two_2014:
+                dic_two_2014[table[i]] = 1
+            else:
+                dic_two_2014[table[i]] += 1
+                    
+    print("This 2Last_lotto in 2010" + str(dic_two_2010))
+    print("This 2Last_lotto in 2011" + str(dic_two_2011))
+    print("This 2Last_lotto in 2012" + str(dic_two_2012))
+    print("This 2Last_lotto in 2013" + str(dic_two_2013))
+    print("This 2Last_lotto in 2014" + str(dic_two_2014))
+    
+    print("value-"+str(len(dic_two_2010.values())))
+    print("value-"+str(len(dic_two_2011.values())))
+    print("value-"+str(len(dic_two_2012.values())))
+    print("value-"+str(len(dic_two_2013.values())))
+    print("value-"+str(len(dic_two_2014.values())))
+
+lotto_two()
