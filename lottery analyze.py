@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 def make_input(prize):  ####สร้างอินพุทเก็บเป็นลิสต์
+    """"""
     import csv
     with open("List_of_lotto_2010_2014 - Sheet1.csv") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -22,7 +23,8 @@ def make_input(prize):  ####สร้างอินพุทเก็บเป�
             prize_n = [row['3Last1'] for row in reader]
             return prize_n
             
-def compile_number(year, table, dic):
+def compile_number(year, table, dic):#นับจำนวนครั้งที่ออก แล้วเก็บค่าเป็น dic
+    """"""
     if year == "2010":
         count = 24
         for i in range(count):
@@ -73,15 +75,17 @@ def compile_number(year, table, dic):
                 dic[table[i]] += 1
         return dic
     
-def lotto_two():
-        dic_two_2010 = compile_number("2010", make_input("2num"), dict())
-        dic_two_2011 = compile_number("2011", make_input("2num"), dict())
-        dic_two_2012 = compile_number("2012", make_input("2num"), dict())
-        dic_two_2013 = compile_number("2013", make_input("2num"), dict())
-        dic_two_2014 = compile_number("2014", make_input("2num"), dict())
-        return dic_two_2010, dic_two_2011, dic_two_2012, dic_two_2013, dic_two_2014
+def lotto_two():#เก็บจำนวนครั้งของ 2 หลัก
+    """"""
+    dic_two_2010 = compile_number("2010", make_input("2num"), dict())
+    dic_two_2011 = compile_number("2011", make_input("2num"), dict())
+    dic_two_2012 = compile_number("2012", make_input("2num"), dict())
+    dic_two_2013 = compile_number("2013", make_input("2num"), dict())
+    dic_two_2014 = compile_number("2014", make_input("2num"), dict())
+    return dic_two_2010, dic_two_2011, dic_two_2012, dic_two_2013, dic_two_2014
 
-def lotto_three():
+def lotto_three():#เก็บจำนวนครั้งของ 3 หลัก
+    """"""
     for num in range(1, 5):
         if num == 1:
             dic_two_2010 = compile_number("2010", make_input("3num1"), dict())
@@ -110,7 +114,8 @@ def lotto_three():
         
     return dic_two_2010, dic_two_2011, dic_two_2012, dic_two_2013, dic_two_2014
 
-def lotto_six():
+def lotto_six():#เก็บจำนวนครั้งของรางวัลที่หนึ่ง
+    """"""
     digit1 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit2 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit3 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
@@ -126,36 +131,43 @@ def lotto_six():
         digit5[lotto[4]] += 1
         digit6[lotto[5]] += 1
     return digit1, digit2, digit3, digit4, digit5, digit6
-def make_graphlotto(number, times):
+def make_graphlotto(number, times):#นำข้อมูลมาแสดงกราฟ
+    """"""
     import matplotlib.pyplot as plt; plt.rcdefaults()
     import numpy as np
     import matplotlib.pyplot as plt
+    import random
+    color_random = "#%06x" % random.randint(0, 0xFFFFFF)
     objects = number
     y_pos = np.arange(len(objects))
     performance = times
  
-    plt.bar(y_pos, performance, align='center', alpha=0.5)
+    plt.bar(y_pos, performance, align='center', alpha=0.5, color=color_random)
     plt.xticks(y_pos, objects)
     plt.ylabel('Times')
     plt.title('ww')
     plt.show()
-def graph2lotto():
-    dic1,dic2,dic3,dic4,dic5 = lotto_two()
-    make_graphlotto(dic1)
-    make_graphlotto(dic2)
-    make_graphlotto(dic3)
-    make_graphlotto(dic4)
-    make_graphlotto(dic5)
+def graph2lotto():#แสดงกราฟรางวัล 2หลัก
+    """"""
+    two_lotto_2010, two_lotto_2011, two_lotto_2012, two_lotto_2013, two_lotto_2014 = lotto_two()
+    make_graphlotto(two_lotto_2010.keys(), two_lotto_2010.values())
+    make_graphlotto(two_lotto_2011.keys(), two_lotto_2011.values())
+    make_graphlotto(two_lotto_2012.keys(), two_lotto_2012.values())
+    make_graphlotto(two_lotto_2013.keys(), two_lotto_2013.values())
+    make_graphlotto(two_lotto_2014.keys(), two_lotto_2014.values())
 
-def graph3lotto():
-    dic1,dic2,dic3,dic4,dic5 = lotto_three()
-    make_graphlotto(dic1)
-    make_graphlotto(dic2)
-    make_graphlotto(dic3)
-    make_graphlotto(dic4)
-    make_graphlotto(dic5)
+def graph3lotto():#แสดงกราฟรางวัล 3หลัก
+    """"""
+    three_lotto_2010, three_lotto_2011, three_lotto_2012, three_lotto_2013, three_lotto_2014 = lotto_three()
+    make_graphlotto(three_lotto_2010.keys(), three_lotto_2010.values())
+    make_graphlotto(three_lotto_2011.keys(), three_lotto_2011.values())
+    make_graphlotto(three_lotto_2012.keys(), three_lotto_2012.values())
+    make_graphlotto(three_lotto_2013.keys(), three_lotto_2013.values())
+    make_graphlotto(three_lotto_2014.keys(), three_lotto_2014.values())
 
-def graph6lotto():
+
+def graph6lotto():#แสดงกราฟรางวัลที่หนึ่ง
+    """"""
     digit1, digit2, digit3, digit4, digit5,digit6 = lotto_six()
     list_of_num = ["0","1","2","3","4","5","6","7","8","9"]
     list_of_times1 = []
