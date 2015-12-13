@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+"""PROJECT : LOTTERY ANALYZE"""
 def make_input(prize):  ####สร้างอินพุทเก็บเป็นลิสต์
-    """"""
+    """make input to dict and return."""
     import csv
     with open("List_of_lotto_2010_2014 - Sheet1.csv") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -23,99 +24,99 @@ def make_input(prize):  ####สร้างอินพุทเก็บเป�
             prize_n = [row['3Last1'] for row in reader]
             return prize_n
             
-def compile_number(year, table, dic):#นับจำนวนครั้งที่ออก แล้วเก็บค่าเป็น dic
-    """"""
+def compile_number(year, list_number, storage):#นับจำนวนครั้งที่ออก แล้วเก็บค่าเป็น dic
+    """return dict of number form compile number"""
     if year == "2010":
         count = 24
         for i in range(count):
             #this 2Last_lotto in 2010      
-            if table[i] not in dic:
-                dic[table[i]] = 1
+            if list_number[i] not in storage:
+                storage[list_number[i]] = 1
             else:
-                dic[table[i]] += 1
-        return dic
+                storage[list_number[i]] += 1
+        return storage
                 
     elif year == "2011":
         count = 48
         for i in range(24, count):
             #this 2Last_lotto in 2011
-            if table[i] not in dic:
-                dic[table[i]] = 1
+            if list_number[i] not in storage:
+                storage[list_number[i]] = 1
             else:
-                dic[table[i]] += 1
-        return dic
+                storage[list_number[i]] += 1
+        return storage
                 
     elif year == "2012":
         count = 72
         for i in range(48, count):
             #this 2Last_lotto in 2012
-            if table[i] not in dic:
-                dic[table[i]] = 1
+            if list_number[i] not in storage:
+                storage[list_number[i]] = 1
             else:
-                dic[table[i]] += 1
-        return dic
+                storage[list_number[i]] += 1
+        return storage
                 
     elif year == "2013":
         count = 96
         for i in range(72, count):
             #this 2Last_lotto in 2013
-            if table[i] not in dic:
-                dic[table[i]] = 1
+            if list_number[i] not in storage:
+                storage[list_number[i]] = 1
             else:
-                dic[table[i]] += 1
-        return dic
+                storage[list_number[i]] += 1
+        return storage
                 
     elif year == "2014":
         count = 120
         for i in range(96, count):
             #this 2Last_lotto in 2014
-            if table[i] not in dic:
-                dic[table[i]] = 1
+            if list_number[i] not in storage:
+                storage[list_number[i]] = 1
             else:
-                dic[table[i]] += 1
-        return dic
+                storage[list_number[i]] += 1
+        return storage
     
 def lotto_two():#เก็บจำนวนครั้งของ 2 หลัก
-    """"""
-    dic_two_2010 = compile_number("2010", make_input("2num"), dict())
-    dic_two_2011 = compile_number("2011", make_input("2num"), dict())
-    dic_two_2012 = compile_number("2012", make_input("2num"), dict())
-    dic_two_2013 = compile_number("2013", make_input("2num"), dict())
-    dic_two_2014 = compile_number("2014", make_input("2num"), dict())
-    return dic_two_2010, dic_two_2011, dic_two_2012, dic_two_2013, dic_two_2014
+    """return dict of prize number by year"""
+    lotto_two_2010 = compile_number("2010", make_input("2num"), dict())
+    lotto_two_2011 = compile_number("2011", make_input("2num"), dict())
+    lotto_two_2012 = compile_number("2012", make_input("2num"), dict())
+    lotto_two_2013 = compile_number("2013", make_input("2num"), dict())
+    lotto_two_2014 = compile_number("2014", make_input("2num"), dict())
+    return lotto_two_2010, lotto_two_2011, lotto_two_2012, lotto_two_2013, lotto_two_2014
 
 def lotto_three():#เก็บจำนวนครั้งของ 3 หลัก
-    """"""
+    """return dict of prize number by year"""
     for num in range(1, 5):
         if num == 1:
-            dic_two_2010 = compile_number("2010", make_input("3num1"), dict())
-            dic_two_2011 = compile_number("2011", make_input("3num1"), dict())
-            dic_two_2012 = compile_number("2012", make_input("3num1"), dict())
-            dic_two_2013 = compile_number("2013", make_input("3num1"), dict())
-            dic_two_2014 = compile_number("2014", make_input("3num1"), dict())
+            lotto_three_2010 = compile_number("2010", make_input("3num1"), dict())
+            lotto_three_2011 = compile_number("2011", make_input("3num1"), dict())
+            lotto_three_2012 = compile_number("2012", make_input("3num1"), dict())
+            lotto_three_2013 = compile_number("2013", make_input("3num1"), dict())
+            lotto_three_2014 = compile_number("2014", make_input("3num1"), dict())
         elif num == 2:
-            dic_two_2010 = compile_number("2010", make_input("3num2"), dic_two_2010)
-            dic_two_2011 = compile_number("2011", make_input("3num2"), dic_two_2011)
-            dic_two_2012 = compile_number("2012", make_input("3num2"), dic_two_2012)
-            dic_two_2013 = compile_number("2013", make_input("3num2"), dic_two_2013)
-            dic_two_2014 = compile_number("2014", make_input("3num2"), dic_two_2014)
+            lotto_three_2010 = compile_number("2010", make_input("3num2"), lotto_three_2010)
+            lotto_three_2011 = compile_number("2011", make_input("3num2"), lotto_three_2011)
+            lotto_three_2012 = compile_number("2012", make_input("3num2"), lotto_three_2012)
+            lotto_three_2013 = compile_number("2013", make_input("3num2"), lotto_three_2013)
+            lotto_three_2014 = compile_number("2014", make_input("3num2"), lotto_three_2014)
         elif num == 3:
-            dic_two_2010 = compile_number("2010", make_input("3num3"), dic_two_2010)
-            dic_two_2011 = compile_number("2011", make_input("3num3"), dic_two_2011)
-            dic_two_2012 = compile_number("2012", make_input("3num3"), dic_two_2012)
-            dic_two_2013 = compile_number("2013", make_input("3num3"), dic_two_2013)
-            dic_two_2014 = compile_number("2014", make_input("3num3"), dic_two_2014)
+            lotto_three_2010 = compile_number("2010", make_input("3num3"), lotto_three_2010)
+            lotto_three_2011 = compile_number("2011", make_input("3num3"), lotto_three_2011)
+            lotto_three_2012 = compile_number("2012", make_input("3num3"), lotto_three_2012)
+            lotto_three_2013 = compile_number("2013", make_input("3num3"), lotto_three_2013)
+            lotto_three_2014 = compile_number("2014", make_input("3num3"), lotto_three_2014)
         elif num == 4:
-            dic_two_2010 = compile_number("2010", make_input("3num4"), dic_two_2010)
-            dic_two_2011 = compile_number("2011", make_input("3num4"), dic_two_2011)
-            dic_two_2012 = compile_number("2012", make_input("3num4"), dic_two_2012)
-            dic_two_2013 = compile_number("2013", make_input("3num4"), dic_two_2013)
-            dic_two_2014 = compile_number("2014", make_input("3num4"), dic_two_2014)
+            lotto_three_2010 = compile_number("2010", make_input("3num4"), lotto_three_2010)
+            lotto_three_2011 = compile_number("2011", make_input("3num4"), lotto_three_2011)
+            lotto_three_2012 = compile_number("2012", make_input("3num4"), lotto_three_2012)
+            lotto_three_2013 = compile_number("2013", make_input("3num4"), lotto_three_2013)
+            lotto_three_2014 = compile_number("2014", make_input("3num4"), lotto_three_2014)
         
-    return dic_two_2010, dic_two_2011, dic_two_2012, dic_two_2013, dic_two_2014
+    return lotto_three_2010, lotto_three_2011, lotto_three_2012, lotto_three_2013, lotto_three_2014
 
 def lotto_six():#เก็บจำนวนครั้งของรางวัลที่หนึ่ง
-    """"""
+    """return dict of prize number by each number in prize"""
     digit1 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit2 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
     digit3 = {"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0}
@@ -132,7 +133,7 @@ def lotto_six():#เก็บจำนวนครั้งของรางว
         digit6[lotto[5]] += 1
     return digit1, digit2, digit3, digit4, digit5, digit6
 def make_graphlotto(number, times):#นำข้อมูลมาแสดงกราฟ
-    """"""
+    """print graph """
     import matplotlib.pyplot as plt; plt.rcdefaults()
     import numpy as np
     import matplotlib.pyplot as plt
@@ -142,19 +143,21 @@ def make_graphlotto(number, times):#นำข้อมูลมาแสดง�
     y_pos = np.arange(len(objects))
     performance = times
  
-    plt.bar(y_pos, performance, align='center', alpha=0.5, color=color_random)
+    plt.bar(y_pos, performance, align='center', alpha=0.5, color=color_random )
     plt.xticks(y_pos, objects)
     plt.ylabel('Times')
-    plt.title('ww')
+    plt.title('amount of prize number')
+    
     plt.show()
 def graph2lotto():#แสดงกราฟรางวัล 2หลัก
     """"""
     two_lotto_2010, two_lotto_2011, two_lotto_2012, two_lotto_2013, two_lotto_2014 = lotto_two()
-    make_graphlotto(two_lotto_2010.keys(), two_lotto_2010.values())
-    make_graphlotto(two_lotto_2011.keys(), two_lotto_2011.values())
-    make_graphlotto(two_lotto_2012.keys(), two_lotto_2012.values())
-    make_graphlotto(two_lotto_2013.keys(), two_lotto_2013.values())
+    #make_graphlotto(two_lotto_2010.keys(), two_lotto_2010.values())
+    #make_graphlotto(two_lotto_2011.keys(), two_lotto_2011.values())
+    #make_graphlotto(two_lotto_2012.keys(), two_lotto_2012.values())
+    #make_graphlotto(two_lotto_2013.keys(), two_lotto_2013.values())
     make_graphlotto(two_lotto_2014.keys(), two_lotto_2014.values())
+graph2lotto()
 
 def graph3lotto():#แสดงกราฟรางวัล 3หลัก
     """"""
@@ -189,12 +192,11 @@ def graph6lotto():#แสดงกราฟรางวัลที่หนึ�
         list_of_times5.append(digit5[num])
     for num in list_of_num:
         list_of_times6.append(digit6[num])
-        
+
     make_graphlotto(list_of_num, list_of_times1)
     make_graphlotto(list_of_num, list_of_times2)
     make_graphlotto(list_of_num, list_of_times3)
     make_graphlotto(list_of_num, list_of_times4)
     make_graphlotto(list_of_num, list_of_times5)
     make_graphlotto(list_of_num, list_of_times6)
-graph6lotto()
-####ตัวแปรที่ต้องแก้มี dic_two, table, i, dic
+
