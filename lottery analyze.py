@@ -140,11 +140,13 @@ def make_graphlotto(number, times):#นำข้อมูลมาแสดง�
     import random
     color_random = "#%06x" % random.randint(0, 0xFFFFFF)
     objects = number
-    y_pos = np.arange(len(objects))
+    y_pos = np.arange(1, len(objects)*2, 2)
     performance = times
  
-    plt.bar(y_pos, performance, align='center', alpha=0.5, color=color_random )
+    plt.bar(y_pos, performance, align='center', alpha=0.5, color=color_random)
+    plt.subplots_adjust(hspace=10)
     plt.xticks(y_pos, objects)
+    plt.tick_params(axis='x', labelsize=7)
     plt.ylabel('Times')
     plt.title('amount of prize number')
     
@@ -156,18 +158,23 @@ def graph2lotto():#แสดงกราฟรางวัล 2หลัก
     #make_graphlotto(two_lotto_2011.keys(), two_lotto_2011.values())
     #make_graphlotto(two_lotto_2012.keys(), two_lotto_2012.values())
     #make_graphlotto(two_lotto_2013.keys(), two_lotto_2013.values())
-    make_graphlotto(two_lotto_2014.keys(), two_lotto_2014.values())
-graph2lotto()
+    #make_graphlotto(two_lotto_2014.keys(), two_lotto_2014.values())
+#graph2lotto()
 
 def graph3lotto():#แสดงกราฟรางวัล 3หลัก
     """"""
     three_lotto_2010, three_lotto_2011, three_lotto_2012, three_lotto_2013, three_lotto_2014 = lotto_three()
-    make_graphlotto(three_lotto_2010.keys(), three_lotto_2010.values())
-    make_graphlotto(three_lotto_2011.keys(), three_lotto_2011.values())
-    make_graphlotto(three_lotto_2012.keys(), three_lotto_2012.values())
-    make_graphlotto(three_lotto_2013.keys(), three_lotto_2013.values())
+    #make_graphlotto(three_lotto_2010.keys(), three_lotto_2010.values())
+    #make_graphlotto(three_lotto_2011.keys(), three_lotto_2011.values())
+    #make_graphlotto(three_lotto_2012.keys(), three_lotto_2012.values())
+    #make_graphlotto(three_lotto_2013.keys(), three_lotto_2013.values())
     make_graphlotto(three_lotto_2014.keys(), three_lotto_2014.values())
-
+    print(three_lotto_2010)
+    print(three_lotto_2011)
+    print(three_lotto_2012)
+    print(three_lotto_2013)
+    print(three_lotto_2014)
+graph3lotto()
 
 def graph6lotto():#แสดงกราฟรางวัลที่หนึ่ง
     """"""
