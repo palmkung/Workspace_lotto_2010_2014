@@ -144,8 +144,7 @@ def make_graphlotto(number, times):#นำข้อมูลมาแสดง�
     plt.xticks(y_pos, objects)
     plt.tick_params(axis='x', labelsize=7)
     plt.ylabel('Times')
-    plt.title('amount of prize number')
-    
+    plt.title('amount of prize number') 
     plt.show()
 
 def graph2lotto():#แสดงกราฟรางวัล 2หลัก 
