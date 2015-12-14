@@ -21,7 +21,7 @@ def make_input(prize):  ####สร้างอินพุทเก็บเป�
             prize_n = [row['3Last3'] for row in reader]
             return prize_n
         elif prize == '3num4':
-            prize_n = [row['3Last1'] for row in reader]
+            prize_n = [row['3Last4'] for row in reader]
             return prize_n
             
 def compile_number(year, list_number, storage):#นับจำนวนครั้งที่ออก แล้วเก็บค่าเป็น dic
@@ -107,7 +107,6 @@ def lotto_three():#เก็บจำนวนครั้งของ 3 หล�
             lotto_three_2012 = compile_number("2012", make_input("3num4"), lotto_three_2012)
             lotto_three_2013 = compile_number("2013", make_input("3num4"), lotto_three_2013)
             lotto_three_2014 = compile_number("2014", make_input("3num4"), lotto_three_2014)
-        
     return lotto_three_2010, lotto_three_2011, lotto_three_2012, lotto_three_2013, lotto_three_2014
 
 def lotto_six():#เก็บจำนวนครั้งของรางวัลที่หนึ่ง
@@ -167,7 +166,6 @@ def graph3lotto():#แสดงกราฟรางวัล 3หลัก
     make_graphlotto(three_lotto_2012.keys(), three_lotto_2012.values())
     make_graphlotto(three_lotto_2013.keys(), three_lotto_2013.values())
     make_graphlotto(three_lotto_2014.keys(), three_lotto_2014.values())
-
 graph3lotto()
 
 def graph6lotto():#แสดงกราฟรางวัลที่หนึ่ง
